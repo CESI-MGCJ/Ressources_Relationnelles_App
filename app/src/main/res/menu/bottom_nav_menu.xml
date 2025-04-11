@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_selector_home"
+        android:title="Accueil" />
+
+    <item
+        android:id="@+id/nav_ressources"
+        android:icon="@drawable/ic_selector_file"
+        android:title="Ressources" />
+
+    <item
+        android:id="@+id/nav_profil"
+        android:icon="@drawable/ic_selector_user"
+        android:title="Profil" />
+
+    <item
+        android:id="@+id/nav_admin"
+        android:icon="@drawable/ic_selector_security"
+        android:title="Admin" />
+
+</menu>

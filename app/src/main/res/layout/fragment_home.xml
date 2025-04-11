@@ -1,22 +1,432 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:fillViewport="true"
+    android:background="@color/backgroundColor">
 
-    <TextView
-        android:id="@+id/text_home"
+    <!-- Conteneur principal -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical">
+
+        <!-- HERO SECTION -->
+        <RelativeLayout
+            android:id="@+id/heroSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_bg">
+
+            <!-- L'image de la vague, en bas -->
+            <ImageView
+                android:id="@+id/imgWave"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/hero_wave"
+                android:layout_alignParentBottom="true"/>
+
+            <!-- Titre principal (placé “au-dessus” dans la hiérarchie du layout) -->
+            <TextView
+                android:id="@+id/tvHeroTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Améliorez vos relations, épanouissez-vous"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="100dp"
+                android:paddingHorizontal="24dp"
+                android:layout_centerHorizontal="true"
+                />
+
+            <!-- Sous-texte -->
+            <TextView
+                android:id="@+id/tvHeroSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rejoignez une plateforme unique dédiée à la qualité de nos liens..."
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:layout_below="@+id/tvHeroTitle"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="24dp"
+                />
+
+            <!-- Bouton dans la zone Hero -->
+            <Button
+                android:id="@+id/btnHero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="Explorer les ressources"
+                android:layout_below="@+id/tvHeroSubtitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="100dp"
+                android:paddingHorizontal="12dp"
+                android:backgroundTint="#ffffff"
+                android:textColor="@color/primaryColor"/>
+        </RelativeLayout>
+
+
+
+        <!-- PRESENTATION DU PROJET -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="40dp"
+            android:paddingHorizontal="16dp"
+            android:gravity="center"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pourquoi Resources Relationnelles ?"
+                android:textColor="@color/primaryColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Parce que des liens forts rendent heureux, Resources Relationnelles vous aide à créer, découvrir et partager des outils pour améliorer vos relations."
+                android:textSize="14sp"
+                android:textColor="@color/textColor"
+                android:gravity="center"/>
+        </LinearLayout>
+
+
+        <!-- Conteneur Features global -->
+        <LinearLayout
+            android:id="@+id/featuresSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center">
+
+            <!-- ===================== FEATURE 1 ===================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="32dp">
+
+                <!-- Image de gauche -->
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/man_ordering_file"
+                    android:layout_marginRight="16dp"/>
+
+                <!-- Bloc texte (et bouton) à droite -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1. Catalogue &amp; Découverte"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primaryColor"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Explorez des articles, vidéos et défis pour améliorer vos relations au quotidien."
+                        android:textSize="14sp"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Explorer le catalogue"
+                        android:layout_marginTop="12dp"
+                        android:backgroundTint="@color/primaryColor"
+                        android:textColor="@android:color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- ===================== FEATURE 2 ===================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="32dp">
+
+                <!-- Image de gauche (man_woman_sharing.png) -->
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/man_woman_sharing"
+                    android:layout_marginRight="16dp"/>
+
+                <!-- Bloc texte (et bouton) à droite -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2. Créer &amp; Partager"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primaryColor"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Partagez vos outils et expériences pour enrichir la communauté."
+                        android:layout_marginTop="8dp"
+                        android:textSize="14sp"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Proposer une ressource"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@color/primaryColor"
+                        android:textColor="@android:color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- ===================== FEATURE 3 ===================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="32dp">
+
+                <!-- Image de gauche (woman_idea_page.png) -->
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/woman_idea_page"
+                    android:layout_marginRight="16dp"/>
+
+                <!-- Bloc texte (et bouton) à droite -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3. Donnez votre avis"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/primaryColor"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Donnez votre avis pour aider les autres à mieux choisir et progresser."
+                        android:layout_marginTop="8dp"
+                        android:textSize="14sp"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Se créer un compte"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@color/primaryColor"
+                        android:textColor="@android:color/white"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <!-- TESTIMONIALS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="24dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ils nous ont fait confiance"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/textColor"/>
+
+            <!-- Container horizontal pour 3 témoignages
+                 (pour le mobile, tu peux aussi les empiler verticalement). -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarStyle="outsideOverlay"
+                android:paddingVertical="5dp"
+                android:layout_marginTop="16dp"
+                android:scrollbarThumbHorizontal="@drawable/scrollbar_primary"
+                android:fadeScrollbars="false">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <!-- Témoignage #1 -->
+                    <LinearLayout
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/primary_light_rounded"
+                        >
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/girl_1"
+                            android:layout_gravity="center_horizontal"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Amandine"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="J’ai découvert un tas d’astuces pour mieux communiquer avec mon ado. Un vrai soulagement !"
+                            android:layout_marginTop="8dp"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/primary_light_rounded"
+                        >
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/man_1"
+                            android:layout_gravity="center_horizontal"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Julien"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Les défis proposés sont hyper ludiques, et ça a vraiment rapproché toute notre équipe au bureau"
+                            android:layout_marginTop="8dp"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:layout_marginRight="16dp"
+                        android:background="@drawable/primary_light_rounded"
+
+                        >
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/girl_1"
+                            android:layout_gravity="center_horizontal"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sarah"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Créer mes propres ressources et les voir appréciées par d’autres, c’est super gratifiant"
+                            android:layout_marginTop="8dp"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+
+        <!-- CTA FINAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_bg"
+            android:orientation="vertical"
+            android:paddingVertical="32dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvCtaTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vous êtes partant ?"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                />
+
+            <TextView
+                android:id="@+id/tvCtaDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rejoignez une communauté bienveillante pour renforcer vos liens et trouver l’inspiration."
+                android:textSize="14sp"
+                android:layout_below="@+id/tvCtaTitle"
+                android:layout_marginTop="4dp"
+                android:textColor="@android:color/white"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btnCta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="S'inscrire maintenant"
+                android:layout_marginTop="24dp"
+                android:textAllCaps="false"
+                android:textColor="@color/primaryColor"
+                android:backgroundTint="@android:color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
