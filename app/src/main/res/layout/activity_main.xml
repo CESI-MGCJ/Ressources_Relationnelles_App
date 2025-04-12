@@ -45,6 +45,7 @@
         android:background="@color/primaryColor"
         app:itemIconTint="@drawable/selector_bottom_nav"
         app:itemTextColor="@drawable/selector_bottom_nav"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface"
         app:menu="@menu/bottom_nav_menu" />
 
 

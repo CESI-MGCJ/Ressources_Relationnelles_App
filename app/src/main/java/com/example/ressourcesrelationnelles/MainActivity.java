@@ -1,10 +1,16 @@
 package com.example.ressourcesrelationnelles;
 
+import static android.app.PendingIntent.getActivity;
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.ressourcesrelationnelles.services.api.TokenManager;
 import com.example.ressourcesrelationnelles.ui.admin.AdminFragment;
+import com.example.ressourcesrelationnelles.ui.auth.LoginActivity;
 import com.example.ressourcesrelationnelles.ui.home.HomeFragment;
 import com.example.ressourcesrelationnelles.ui.profil.ProfilFragment;
 import com.example.ressourcesrelationnelles.ui.ressources.RessourcesFragment;
@@ -32,12 +38,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new HomeFragment())
-                    .commit();
-        }
-
         bottomNav = findViewById(R.id.bottom_nav);
 
         // Charger la page d'accueil par défaut
@@ -47,17 +47,20 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
 
             int itemId = item.getItemId();
+            TokenManager tokenManager = new TokenManager();
 
             if (itemId == R.id.nav_home) {
                 selectedFragment = new HomeFragment();
             } else if (itemId == R.id.nav_ressources) {
                 selectedFragment = new RessourcesFragment();
+            } else if(tokenManager.getToken() == null || tokenManager.getUser() == null) {
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
             } else if (itemId == R.id.nav_profil) {
                 selectedFragment = new ProfilFragment();
             } else if (itemId == R.id.nav_admin) {
                 selectedFragment = new AdminFragment();
             }
-
 
             if (selectedFragment != null) {
                 loadFragment(selectedFragment);
