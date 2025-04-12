@@ -60,11 +60,6 @@ public class SignupActivity extends AppCompatActivity {
         reqDigit = findViewById(R.id.req_digit);
         reqSpecial = findViewById(R.id.req_special);
 
-        etFirstName.setText("Matthieu");
-        etLastName.setText("Delannoy");
-        etEmail.setText("matthox45@gmail.com");
-        etPassword.setText("Test1234!");
-
         validatePassword(etPassword.getText().toString().trim());
 
 
