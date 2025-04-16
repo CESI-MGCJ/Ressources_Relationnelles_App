@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafbfd">
+        <LinearLayout
+            android:id="@+id/layoutFilterPopup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Types de relation"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupRelation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false"
+                app:chipSpacing="8dp" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Catégories"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupCategorie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false"
+                app:chipSpacing="8dp" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text="Types de ressource"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupRessource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false"
+                app:chipSpacing="8dp" />
+        </LinearLayout>
+</ScrollView>

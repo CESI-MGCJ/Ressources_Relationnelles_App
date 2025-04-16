@@ -3,6 +3,7 @@ package com.example.ressourcesrelationnelles.services.api;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.Toast;
 
 import com.example.ressourcesrelationnelles.App;
 import com.example.ressourcesrelationnelles.ui.auth.LoginActivity;
@@ -16,6 +17,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -46,25 +48,23 @@ public class ApiServiceBuilder {
             Response response = chain.proceed(chain.request());
 
             if (response.code() == 403) {
-                tokenManager.clearToken();
-
-                new Handler(Looper.getMainLooper()).post(() -> {
-                    Intent intent = new Intent(App.getInstance(), LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    App.getInstance().startActivity(intent);
-                });
+                Toast.makeText(App.getInstance(), "Authorisations insuffisantes", Toast.LENGTH_SHORT).show();
             }
 
             return response;
         };
 
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         // Client HTTP configuré
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(100, TimeUnit.SECONDS)
+                .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(100, TimeUnit.SECONDS)
-                .writeTimeout(100, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
                 .addInterceptor(authInterceptor)
                 .addInterceptor(errorInterceptor)
+                .addInterceptor(logging)
                 .build();
 
 
@@ -77,7 +77,7 @@ public class ApiServiceBuilder {
 
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.0.18:8080/api/") // ← à adapter si nécessaire
+                    .baseUrl("http://192.168.223.66:8080/api/") // ← à adapter si nécessaire
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(client)
                     .build();

@@ -1,9 +1,12 @@
 package com.example.ressourcesrelationnelles.models.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class RessourceType {
+public class RessourceType implements Serializable {
 	public Long id;
 	public String name;
 	public List<Ressource> listRessources;
+
+	public RessourceType(){}
 }

@@ -1,8 +1,9 @@
 package com.example.ressourcesrelationnelles.models.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class User {
+public class User  implements Serializable {
 	public Long id;
 	public String email;
 	public String password;
@@ -15,4 +16,6 @@ public class User {
 	public Date creationDate;
 	public Date lastLoginDate;
 	public Adresse adresse;
+
+	public User(){}
 }
